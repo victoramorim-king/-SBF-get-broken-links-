@@ -30,8 +30,8 @@ fn is_broken_link(link: &str) -> bool{
 }
 
 fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
-    let url = "mysql://root:bArch_358799@localhost:3306/SITE_BEM_FEITO";
-    let pool = Pool::new(url)?;
+    let mysql_url: &str = include!("../resources/mysql-access.txt"); // "mysql://root:password@localhost:3306/DatabaseName"
+    let pool = Pool::new(mysql_url)?;
     let mut conn = pool.get_conn()?;
 
     // // conn.query_drop(
